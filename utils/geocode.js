@@ -14,13 +14,19 @@ const geocode = (address, callback) => {
         }  else if(response.body.features.length == 0) {
             callback('Unable to find location. Try another search', undefined)
         } else {
-            const body = response.body
-
+            const {center, location} = response.body.features[0]
             callback(undefined, {
-                latitude: body.features[0].center[1],
-                longitude: body.features[0].center[0],
-                location: body.features[0].place_name
+                latitude: center[1],
+                longitude: center[0],
+                location
             })
+            // const body = response.body
+
+            // callback(undefined, {
+            //     latitude: body.features[0].center[1],
+            //     longitude: body.features[0].center[0],
+            //     location: body.features[0].place_name
+            // })
         }
         
      })

@@ -14,12 +14,19 @@
         } else if(response.body.error) {
             callback('Unable to find location', undefined)
         } else {
-            const body = response.body
+            const {currently, daily} = response.body
             callback(undefined, {
-                temperature: body.currently.temperature,
-                rain: body.currently.precipProbability,
-                summary: body.daily.data[0].summary
+                temperature: currently.temperature,
+                rain: currently.precipProbability,
+                summary: daily.data[0].summary
             })
+
+            // const body = response.body
+            // callback(undefined, {
+            //     temperature: body.currently.temperature,
+            //     rain: body.currently.precipProbability,
+            //     summary: body.daily.data[0].summary
+            // })
         }
      })
  }

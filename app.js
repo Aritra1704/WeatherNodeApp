@@ -12,6 +12,7 @@
         if(error)
            return console.log('Error', error)
         
+           console.log(data.latitude, data.longitude)
         forecast(data.latitude, data.longitude, (error, forecastdata) => {
             if(error)
                 return console.log('Error', error)
