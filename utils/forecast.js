@@ -7,14 +7,14 @@
     const url = 'https://api.darksky.net/forecast/' + API_dark_sky + '/' + latitude + ',' + longitude
     console.log(url)
 
-    request({url: url, json: true}, (error, response) => {
+    request({url, json: true}, (error, {body}) => {
     
         if(error) {
             callback('Unable to connect to weather service', undefined)
-        } else if(response.body.error) {
+        } else if(body.error) {
             callback('Unable to find location', undefined)
         } else {
-            const {currently, daily} = response.body
+            const {currently, daily} = body
             callback(undefined, {
                 temperature: currently.temperature,
                 rain: currently.precipProbability,

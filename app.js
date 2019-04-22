@@ -8,17 +8,19 @@
  if(!address)
     console.log('Please provide an address after node app.js')
  else {
-    geocode(address, (error, data) => {
+    geocode(address, (error, {latitude, longitude, location}) => {
         if(error)
            return console.log('Error', error)
         
-           console.log(data.latitude, data.longitude)
-        forecast(data.latitude, data.longitude, (error, forecastdata) => {
+           console.log(latitude, longitude)
+        forecast(latitude, longitude, (error, {temperature, rain, summary}) => {
             if(error)
                 return console.log('Error', error)
             
-            console.log(data.location)
-            console.log(forecastdata)
+            console.log(location)
+            console.log('temperature: ' + temperature)
+            console.log('rain: ' + rain)
+            console.log('summary: ' + summary)
         })
         
        
