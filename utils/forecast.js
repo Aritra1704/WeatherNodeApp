@@ -1,6 +1,6 @@
  const request = require('request')
 
- const API_dark_sky = '62a0bdddff6d2306187480b1af18b9c7' 
+ const API_dark_sky = 'DARK_SKY_API' 
  
 
  const forecast = (latitude, longitude, callback) => {
